@@ -1,0 +1,19 @@
+<launch>
+  <!-- Left hand camera -->
+  <node name="left_hand_camera" pkg="usb_cam" type="usb_cam_node" output="screen">
+    <param name="video_device" value="/dev/video0"/>
+    <param name="image_width" value="640"/>
+    <param name="image_height" value="480"/>
+    <param name="pixel_format" value="yuyv"/>
+    <param name="camera_frame_id" value="left_hand_camera"/>
+  </node>
+
+  <!-- Right hand camera -->
+  <node name="right_hand_camera" pkg="usb_cam" type="usb_cam_node" output="screen">
+    <param name="video_device" value="/dev/video2"/>
+    <param name="image_width" value="640"/>
+    <param name="image_height" value="480"/>
+    <param name="pixel_format" value="yuyv"/>
+    <param name="camera_frame_id" value="right_hand_camera"/>
+  </node>
+</launch>

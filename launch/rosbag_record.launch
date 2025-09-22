@@ -1,0 +1,30 @@
+<launch>
+  <arg name="output_prefix" default="hironxjsk_demo" />
+  <arg name="compress" default="false" doc="whether compress rosbag or not." />
+
+  <arg name="camera_ns" default="" />
+
+  <!-- compress flag-->
+  <arg if="$(arg compress)" name="compress_flag" value="--bz2" />
+  <arg unless="$(arg compress)" name="compress_flag" value="" />
+
+  <!-- rosbag -->
+  <node name="hironx_rosbag_record" pkg="rosbag" type="record"
+        args="/rosout
+              /joint_states
+	      /sample_robot/joint_states
+              /tf
+              /tf_static
+	      /lhsensor
+	      /rhsensor
+	      /cfs/forces
+	      /left_hand_camera/image_raw/compressed
+	      /right_hand_camera/image_raw/compressed
+	      /camera/orientation_estimation/strand_visualization
+	      /grounded_sam2/concatenated/tracking_result/compressed
+	      /camera/color/image_raw/compressed
+	      /camera/aligned_depth_to_color/image_raw/compressed
+              -q $(arg compress_flag) -b 0
+              --output-prefix $(arg output_prefix)"
+        output="screen" />
+</launch>
