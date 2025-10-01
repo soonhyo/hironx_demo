@@ -1,0 +1,5 @@
+# Left camera (port 3-6.1)
+SUBSYSTEM=="video4linux", KERNELS=="3-6.1", SYMLINK+="left_camera", MODE="0666"
+
+# Right camera (port 3-5)
+SUBSYSTEM=="video4linux", KERNELS=="3-5",   SYMLINK+="right_camera", MODE="0666"
